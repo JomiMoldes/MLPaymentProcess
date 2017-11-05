@@ -18,10 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         self.window = UIWindow(frame:UIScreen.main.bounds)
-        
-        let vc = MLInitialViewController(nibName: "MLInitialView", bundle: nil)
-        
-        let nav = UINavigationController(rootViewController:vc)
+
+        MLGlobalModels.sharedInstance.flowController.addFirstView()
+        let nav = MLGlobalModels.sharedInstance.flowController.navController!
         nav.setNavigationBarHidden(true, animated: false)
         self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()

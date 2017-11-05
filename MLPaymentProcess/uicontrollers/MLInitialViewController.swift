@@ -8,7 +8,11 @@ import UIKit
 
 class MLInitialViewController : UIViewController {
 
-
+    var initialView : MLInitialView {
+        get {
+            return self.view as! MLInitialView
+        }
+    }
 
 }
 

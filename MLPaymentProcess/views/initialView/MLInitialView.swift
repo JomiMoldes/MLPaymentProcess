@@ -12,5 +12,5 @@ class MLInitialView : UIView {
     
     @IBOutlet weak var amountText: UITextField!
     
-
+    var model : MLInitialViewModel!
 }
