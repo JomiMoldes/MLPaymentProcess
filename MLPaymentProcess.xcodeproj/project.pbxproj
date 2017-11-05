@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		05FBA4677B0687ACE57FB6E6 /* Pods_MLPaymentProcessTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE2E0584BD6DCE96D7F8637 /* Pods_MLPaymentProcessTests.framework */; };
+		45BAF20995E70B769FD6F95A /* MLInitialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BAFB7A1931FCF38088E1DD /* MLInitialView.xib */; };
+		45BAF65F9C8385FAB570CAA6 /* MLInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBB314E6287CCAF111EA /* MLInitialViewController.swift */; };
+		45BAF8AA35C12E8AA6DA8176 /* MLInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFB84F0C27750779ACA10 /* MLInitialView.swift */; };
+		45BAF8D34AD702C7DD70376D /* MLDesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF39F3AC70CB002014633 /* MLDesignableView.swift */; };
+		45BAF94052E138F11255413A /* MLInitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF0CAC86EB90913568E52 /* MLInitialViewModel.swift */; };
+		45BAFA6C064D2ABA3A839B25 /* MLContinueButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBB311CE77A9339F801A /* MLContinueButtonView.swift */; };
 		48BE3D4D1FAFA8A600A8D7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE3D4C1FAFA8A600A8D7C5 /* AppDelegate.swift */; };
 		48BE3D4F1FAFA8A600A8D7C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE3D4E1FAFA8A600A8D7C5 /* ViewController.swift */; };
-		48BE3D521FAFA8A600A8D7C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BE3D501FAFA8A600A8D7C5 /* Main.storyboard */; };
 		48BE3D541FAFA8A600A8D7C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48BE3D531FAFA8A600A8D7C5 /* Assets.xcassets */; };
 		48BE3D571FAFA8A600A8D7C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BE3D551FAFA8A600A8D7C5 /* LaunchScreen.storyboard */; };
 		48BE3D621FAFA8A600A8D7C5 /* MLPaymentProcessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE3D611FAFA8A600A8D7C5 /* MLPaymentProcessTests.swift */; };
+		48BE3D6F1FAFB7C400A8D7C5 /* MLContinueButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48BE3D6E1FAFB7C400A8D7C5 /* MLContinueButtonView.xib */; };
 		89A40E6754459449B5B1F0E1 /* Pods_MLPaymentProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44506CF00BCEC940965D6D1D /* Pods_MLPaymentProcess.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,16 +37,22 @@
 		39EBECAC1956543E2BAA5487 /* Pods-MLPaymentProcessTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLPaymentProcessTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MLPaymentProcessTests/Pods-MLPaymentProcessTests.release.xcconfig"; sourceTree = "<group>"; };
 		3C222686C4843F0FCF00EFB8 /* Pods-MLPaymentProcessTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLPaymentProcessTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MLPaymentProcessTests/Pods-MLPaymentProcessTests.debug.xcconfig"; sourceTree = "<group>"; };
 		44506CF00BCEC940965D6D1D /* Pods_MLPaymentProcess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLPaymentProcess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45BAF0CAC86EB90913568E52 /* MLInitialViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLInitialViewModel.swift; sourceTree = "<group>"; };
+		45BAF39F3AC70CB002014633 /* MLDesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLDesignableView.swift; sourceTree = "<group>"; };
+		45BAFB7A1931FCF38088E1DD /* MLInitialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MLInitialView.xib; sourceTree = "<group>"; };
+		45BAFB84F0C27750779ACA10 /* MLInitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLInitialView.swift; sourceTree = "<group>"; };
+		45BAFBB311CE77A9339F801A /* MLContinueButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLContinueButtonView.swift; sourceTree = "<group>"; };
+		45BAFBB314E6287CCAF111EA /* MLInitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLInitialViewController.swift; sourceTree = "<group>"; };
 		48BE3D491FAFA8A500A8D7C5 /* MLPaymentProcess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLPaymentProcess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48BE3D4C1FAFA8A600A8D7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48BE3D4E1FAFA8A600A8D7C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		48BE3D511FAFA8A600A8D7C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48BE3D531FAFA8A600A8D7C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48BE3D561FAFA8A600A8D7C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48BE3D581FAFA8A600A8D7C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48BE3D5D1FAFA8A600A8D7C5 /* MLPaymentProcessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MLPaymentProcessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48BE3D611FAFA8A600A8D7C5 /* MLPaymentProcessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLPaymentProcessTests.swift; sourceTree = "<group>"; };
 		48BE3D631FAFA8A600A8D7C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48BE3D6E1FAFB7C400A8D7C5 /* MLContinueButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MLContinueButtonView.xib; sourceTree = "<group>"; };
 		671A5349BAF5C1718392D78B /* Pods-MLPaymentProcess.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLPaymentProcess.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MLPaymentProcess/Pods-MLPaymentProcess.debug.xcconfig"; sourceTree = "<group>"; };
 		A14A291FC5C92F3A8CDFB894 /* Pods-MLPaymentProcess.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLPaymentProcess.release.xcconfig"; path = "Pods/Target Support Files/Pods-MLPaymentProcess/Pods-MLPaymentProcess.release.xcconfig"; sourceTree = "<group>"; };
 		FDE2E0584BD6DCE96D7F8637 /* Pods_MLPaymentProcessTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLPaymentProcessTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +78,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45BAF1CCD3CA85CCDF80725D /* uicontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				45BAFBB314E6287CCAF111EA /* MLInitialViewController.swift */,
+			);
+			path = uicontrollers;
+			sourceTree = "<group>";
+		};
+		45BAF1EB9B773E5959B0FC19 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		45BAF2BCF01B840D7F410CC9 /* initialView */ = {
+			isa = PBXGroup;
+			children = (
+				45BAFB84F0C27750779ACA10 /* MLInitialView.swift */,
+				45BAF0CAC86EB90913568E52 /* MLInitialViewModel.swift */,
+				45BAFB7A1931FCF38088E1DD /* MLInitialView.xib */,
+			);
+			path = initialView;
+			sourceTree = "<group>";
+		};
+		45BAF77C5012CD338E866C1B /* views */ = {
+			isa = PBXGroup;
+			children = (
+				45BAF2BCF01B840D7F410CC9 /* initialView */,
+				45BAFF6CDA8D65B239F53AF0 /* components */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		45BAFF6CDA8D65B239F53AF0 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				48BE3D6E1FAFB7C400A8D7C5 /* MLContinueButtonView.xib */,
+				45BAFBB311CE77A9339F801A /* MLContinueButtonView.swift */,
+				45BAF39F3AC70CB002014633 /* MLDesignableView.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
 		48BE3D401FAFA8A500A8D7C5 = {
 			isa = PBXGroup;
 			children = (
@@ -91,10 +147,12 @@
 			children = (
 				48BE3D4C1FAFA8A600A8D7C5 /* AppDelegate.swift */,
 				48BE3D4E1FAFA8A600A8D7C5 /* ViewController.swift */,
-				48BE3D501FAFA8A600A8D7C5 /* Main.storyboard */,
 				48BE3D531FAFA8A600A8D7C5 /* Assets.xcassets */,
 				48BE3D551FAFA8A600A8D7C5 /* LaunchScreen.storyboard */,
 				48BE3D581FAFA8A600A8D7C5 /* Info.plist */,
+				45BAF1CCD3CA85CCDF80725D /* uicontrollers */,
+				45BAF1EB9B773E5959B0FC19 /* models */,
+				45BAF77C5012CD338E866C1B /* views */,
 			);
 			path = MLPaymentProcess;
 			sourceTree = "<group>";
@@ -219,7 +277,8 @@
 			files = (
 				48BE3D571FAFA8A600A8D7C5 /* LaunchScreen.storyboard in Resources */,
 				48BE3D541FAFA8A600A8D7C5 /* Assets.xcassets in Resources */,
-				48BE3D521FAFA8A600A8D7C5 /* Main.storyboard in Resources */,
+				48BE3D6F1FAFB7C400A8D7C5 /* MLContinueButtonView.xib in Resources */,
+				45BAF20995E70B769FD6F95A /* MLInitialView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +415,11 @@
 			files = (
 				48BE3D4F1FAFA8A600A8D7C5 /* ViewController.swift in Sources */,
 				48BE3D4D1FAFA8A600A8D7C5 /* AppDelegate.swift in Sources */,
+				45BAF65F9C8385FAB570CAA6 /* MLInitialViewController.swift in Sources */,
+				45BAF8AA35C12E8AA6DA8176 /* MLInitialView.swift in Sources */,
+				45BAF94052E138F11255413A /* MLInitialViewModel.swift in Sources */,
+				45BAFA6C064D2ABA3A839B25 /* MLContinueButtonView.swift in Sources */,
+				45BAF8D34AD702C7DD70376D /* MLDesignableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,14 +442,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		48BE3D501FAFA8A600A8D7C5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				48BE3D511FAFA8A600A8D7C5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		48BE3D551FAFA8A600A8D7C5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

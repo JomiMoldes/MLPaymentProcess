@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MLInitialViewController" customModule="MLPaymentProcess" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="cTT-Lv-buH"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MLInitialView" customModule="MLPaymentProcess" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWU-Em-am3" userLabel="ContinueButton" customClass="MLContinueButtonView" customModule="MLPaymentProcess" customModuleProvider="target">
+                    <rect key="frame" x="94" y="526" width="187.5" height="47"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="TWU-Em-am3" secondAttribute="height" multiplier="4:1" id="hFk-eW-6LU"/>
+                    </constraints>
+                </view>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Monto a pagar" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2hA-QI-28F" userLabel="AmountText">
+                    <rect key="frame" x="94" y="320" width="187.5" height="47"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="2hA-QI-28F" secondAttribute="height" multiplier="4:1" id="TAj-D1-6s5"/>
+                    </constraints>
+                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="TWU-Em-am3" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.6" id="7Ha-0d-fs3"/>
+                <constraint firstItem="2hA-QI-28F" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="ITr-pO-4db"/>
+                <constraint firstItem="TWU-Em-am3" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="NhP-qq-rGH"/>
+                <constraint firstItem="2hA-QI-28F" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="foJ-bg-aEh"/>
+                <constraint firstItem="2hA-QI-28F" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="iS2-wb-wM3"/>
+                <constraint firstItem="TWU-Em-am3" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="roA-lP-6Yc"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="amountText" destination="2hA-QI-28F" id="aOE-PP-KTH"/>
+                <outlet property="continueButtonView" destination="TWU-Em-am3" id="gft-F4-y8c"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+</document>
