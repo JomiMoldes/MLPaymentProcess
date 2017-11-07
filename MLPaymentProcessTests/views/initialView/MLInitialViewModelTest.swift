@@ -23,6 +23,13 @@ class MLInitialViewModelTest : XCTestCase {
         XCTAssertNotNil(self.sut.flowController)
     }
 
+    func testContinuePressed() {
+        let navController = self.flowController.navController as! MLNavigationControllerMock
+        self.sut.continueTouched()
+        XCTAssertEqual(navController.lastViewController?.nibName, "MLPaymentTypeView")
+//        self.flowController
+    }
+
     func testAmountIsValid() {
         let tf = self.createTextField()
         var newText = ""
@@ -102,7 +109,7 @@ class MLInitialViewModelTest : XCTestCase {
 
         tf.text = "12.2"
         XCTAssertFalse(tf.allowAppendStringForPrice(".", maxLength: 5, maxDecimals: 2))
-        
+
         tf.text = "12.2"
         XCTAssertFalse(tf.allowAppendStringForPrice("a", maxLength: 5, maxDecimals: 2))
         
@@ -112,6 +119,13 @@ class MLInitialViewModelTest : XCTestCase {
 
     fileprivate func createSUT() {
         self.sut = MLInitialViewModel(flowController : self.flowController)
+        self.flowController.setup(vc: createFirstView())
+    }
+
+    fileprivate func createFirstView() -> MLInitialViewController {
+        let initialViewController = MLInitialViewController(nibName: "MLInitialView", bundle: nil)
+        initialViewController.initialView.model = MLInitialViewModel(flowController: self.flowController)
+        return initialViewController
     }
 
     fileprivate func createTextField() -> UITextField {

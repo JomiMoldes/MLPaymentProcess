@@ -16,7 +16,7 @@ class MLFlowControllerTest : XCTestCase {
     override func setUp() {
         super.setUp()
         self.createSUT()
-        self.sut.addFirstView()
+//        self.sut.addFirstView()
     }
 
     override func tearDown() {
@@ -24,12 +24,12 @@ class MLFlowControllerTest : XCTestCase {
     }
 
     func testFirstView() {
-        XCTAssertEqual("MLInitialView", (self.navController.lastViewController?.nibName)!)
+        XCTAssertEqual("MLInitialView", (self.getNavController().lastViewController?.nibName)!)
     }
 
     fileprivate func createSUT() {
         self.sut = MLFlowControllerFake()
-        self.navController = MLNavigationControllerMock(rootViewController: self.createFirstView())
+        self.sut.setup(vc: self.createFirstView())
     }
 
     fileprivate func createFirstView() -> MLInitialViewController {
@@ -38,10 +38,18 @@ class MLFlowControllerTest : XCTestCase {
         return initialViewController
     }
 
+    fileprivate func getNavController() -> MLNavigationControllerMock {
+        return self.sut.navController as! MLNavigationControllerMock
+    }
+
     
 }
 
 class MLFlowControllerFake : MLFlowController {
+
+    func setup(vc : UIViewController) {
+        self.navController = MLNavigationControllerMock(rootViewController: vc)
+    }
 
     /*override func addFirstView() {
         self.navController = MLNavigationControllerMock(rootViewController: self.createFirstView())

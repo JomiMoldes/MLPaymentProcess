@@ -15,15 +15,6 @@ class MLNavigationControllerMock: UINavigationController {
     var asyncExpectation : XCTestExpectation?
     var pushExpectation : XCTestExpectation?
 
-//    override init(rootViewController: UIViewController) {
-//        super.init(rootViewController: rootViewController)
-//        self.lastAlertController = rootViewController
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
-
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)
         lastViewController = viewController

@@ -24,7 +24,7 @@ class MLFlowController : MLFlowControllerProtocol {
 
         switch from {
             case .initialView:
-                //vc = MLInitialViewController(nibName: "MLInitialView", bundle: nil)
+                vc = MLPaymentTypeViewController(nibName: "MLPaymentTypeView", bundle: nil)
             break
             case .paymentType:
 
