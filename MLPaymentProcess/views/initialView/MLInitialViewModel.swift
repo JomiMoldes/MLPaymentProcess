@@ -7,20 +7,17 @@ import Foundation
 import UIKit
 import RxSwift
 
-class MLInitialViewModel {
-
-    weak var flowController : MLFlowControllerProtocol!
+class MLInitialViewModel : MLPaymentStepViewModel {
 
     var buttonEnabled = Variable<Bool>(false)
 
     let maxAmountCount : Int = 5
 
-    init(flowController : MLFlowControllerProtocol) {
-        self.flowController = flowController
-    }
-
-    func continueTouched() {
-        self.flowController.goNext(from: .initialView)
+    func continueTouched(amount : String) {
+        if let amount = Double(amount) {
+            self.userPaymentInfo.amountToPay = amount
+            self.flowController.goNext(from: .initialView)
+        }
     }
 
     func amountIsValid(textField : UITextField, text : String) -> Bool {

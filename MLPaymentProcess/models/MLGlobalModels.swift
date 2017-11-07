@@ -9,10 +9,12 @@ class MLGlobalModels {
 
     static let sharedInstance = MLGlobalModels()
 
-    let flowController : MLFlowController!
+    let userPaymentInfo : MLUserPaymentInfo
+    let flowController : MLFlowController
 
     private init() {
-        self.flowController = MLFlowController()
+        self.userPaymentInfo = MLUserPaymentInfo()
+        self.flowController = MLFlowController(userPaymentInfo: self.userPaymentInfo)
     }
 
 }

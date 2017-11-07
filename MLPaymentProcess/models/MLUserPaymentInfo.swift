@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct MLUserPaymentInfo {
+class MLUserPaymentInfo {
 
     var amountToPay = 0.0
     var creditCard = ""

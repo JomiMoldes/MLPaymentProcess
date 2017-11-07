@@ -12,6 +12,7 @@ class MLFlowControllerTest : XCTestCase {
 
     var sut : MLFlowControllerFake!
     var navController : MLNavigationControllerMock!
+    var userInfo : MLUserPaymentInfo!
 
     override func setUp() {
         super.setUp()
@@ -28,13 +29,14 @@ class MLFlowControllerTest : XCTestCase {
     }
 
     fileprivate func createSUT() {
-        self.sut = MLFlowControllerFake()
+        self.userInfo = MLUserPaymentInfo()
+        self.sut = MLFlowControllerFake(userPaymentInfo: self.userInfo)
         self.sut.setup(vc: self.createFirstView())
     }
 
     fileprivate func createFirstView() -> MLInitialViewController {
         let initialViewController = MLInitialViewController(nibName: "MLInitialView", bundle: nil)
-        initialViewController.initialView.model = MLInitialViewModel(flowController: self.sut)
+        initialViewController.initialView.model = MLInitialViewModel(flowController: self.sut, userPaymentInfo: self.userInfo)
         return initialViewController
     }
 

@@ -5,12 +5,9 @@
 
 import Foundation
 
-class MLPaymentTypeViewModel {
+class MLPaymentTypeViewModel : MLPaymentStepViewModel {
 
-    weak var flowController : MLFlowControllerProtocol!
 
-    init(flowController : MLFlowControllerProtocol) {
-        self.flowController = flowController
-    }
 
+    
 }

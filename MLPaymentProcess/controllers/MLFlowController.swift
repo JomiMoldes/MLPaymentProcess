@@ -9,9 +9,10 @@ import UIKit
 class MLFlowController : MLFlowControllerProtocol {
 
     var navController : UINavigationController!
+    let userPaymentInfo : MLUserPaymentInfo
 
-    init() {
-
+    init(userPaymentInfo: MLUserPaymentInfo) {
+        self.userPaymentInfo = userPaymentInfo
     }
 
     func addFirstView() {
@@ -42,7 +43,7 @@ class MLFlowController : MLFlowControllerProtocol {
 
     private func createInitialVC() -> MLInitialViewController {
         let initialViewController = MLInitialViewController(nibName: "MLInitialView", bundle: nil)
-        initialViewController.initialView.model = MLInitialViewModel(flowController: self)
+        initialViewController.initialView.model = MLInitialViewModel(flowController: self, userPaymentInfo: self.userPaymentInfo)
         return initialViewController
     }
 

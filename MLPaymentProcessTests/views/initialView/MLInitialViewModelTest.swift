@@ -12,10 +12,12 @@ class MLInitialViewModelTest : XCTestCase {
 
     var sut : MLInitialViewModel!
     var flowController : MLFlowControllerFake!
+    var userInfo : MLUserPaymentInfo!
 
     override func setUp() {
         super.setUp()
-        self.flowController = MLFlowControllerFake()
+        self.userInfo = MLUserPaymentInfo()
+        self.flowController = MLFlowControllerFake(userPaymentInfo: self.userInfo)
         self.createSUT()
     }
 
@@ -25,9 +27,17 @@ class MLInitialViewModelTest : XCTestCase {
 
     func testContinuePressed() {
         let navController = self.flowController.navController as! MLNavigationControllerMock
-        self.sut.continueTouched()
+        let tf = self.createTextField()
+        tf.text = "12.68"
+
+        self.sut.continueTouched(amount: "")
+        XCTAssertEqual(navController.lastViewController?.nibName, "MLInitialView")
+        XCTAssertEqual(0.0, self.userInfo.amountToPay)
+
+        self.sut.continueTouched(amount: tf.text!)
         XCTAssertEqual(navController.lastViewController?.nibName, "MLPaymentTypeView")
-//        self.flowController
+        XCTAssertEqual(12.68, self.userInfo.amountToPay)
+
     }
 
     func testAmountIsValid() {
@@ -118,18 +128,22 @@ class MLInitialViewModelTest : XCTestCase {
     //MARK - Private
 
     fileprivate func createSUT() {
-        self.sut = MLInitialViewModel(flowController : self.flowController)
+        self.sut = MLInitialViewModel(flowController : self.flowController, userPaymentInfo: self.userInfo)
         self.flowController.setup(vc: createFirstView())
     }
 
     fileprivate func createFirstView() -> MLInitialViewController {
         let initialViewController = MLInitialViewController(nibName: "MLInitialView", bundle: nil)
-        initialViewController.initialView.model = MLInitialViewModel(flowController: self.flowController)
+        initialViewController.initialView.model = self.sut
         return initialViewController
     }
 
     fileprivate func createTextField() -> UITextField {
         let tf = UITextField(frame: CGRect(x:0, y:0, width: 100, height:100))
         return tf
+    }
+
+    fileprivate func getButton() -> UIButton {
+        return UIButton(frame: CGRect(x:0,y:0,width:100,height:100))
     }
 }

@@ -38,7 +38,9 @@ class MLInitialView : UIView {
     }
 
     @objc func continueTouched(_ sender : UIButton) {
-        self.model.continueTouched()
+        if let text = self.amountText.text {
+            self.model.continueTouched(amount: text)
+        }
     }
 
     @objc func textHasChanged(_ textField : UITextField) {
