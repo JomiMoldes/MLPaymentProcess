@@ -4,8 +4,11 @@
 //
 
 import Foundation
+import UIKit
 
 class MLContinueButtonView : MLDesignableView {
+
+    @IBOutlet weak var button : UIButton!
 
     override func xibSetup() {
         self.nibName = "MLContinueButtonView"

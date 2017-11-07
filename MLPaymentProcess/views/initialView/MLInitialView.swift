@@ -5,12 +5,60 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 class MLInitialView : UIView {
 
     @IBOutlet weak var continueButtonView : MLContinueButtonView!
     
     @IBOutlet weak var amountText: UITextField!
+
+    private let disposeBag = DisposeBag()
     
-    var model : MLInitialViewModel!
+    var model : MLInitialViewModel! {
+        didSet {
+            self.bind()
+            self.setup()
+        }
+    }
+
+    fileprivate func setup() {
+        self.continueButtonView.button.addTarget(self, action: #selector(self.continueTouched(_:)), for: .touchUpInside)
+        self.amountText.delegate = self
+        self.amountText.addTarget(self, action: #selector(textHasChanged(_:)), for: .editingChanged)
+    }
+
+    fileprivate func bind() {
+        self.model.buttonEnabled.asObservable().subscribe(onNext: {
+            [unowned self] enabled in
+            self.continueButtonView.button.isEnabled = enabled
+            self.continueButtonView.alpha = enabled ? 1.0 : 0.5
+        }).disposed(by: self.disposeBag)
+    }
+
+    @objc func continueTouched(_ sender : UIButton) {
+        self.model.continueTouched()
+    }
+
+    @objc func textHasChanged(_ textField : UITextField) {
+        self.model.textHasChanged(textField: textField)
+    }
+}
+
+extension MLInitialView : UITextFieldDelegate {
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard textField.text != nil && textField == self.amountText else {
+            return false
+        }
+        return self.model.amountIsValid(textField: textField, text: string)
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.model.textHasChanged(textField: textField)
+    }
+
+
+
 }

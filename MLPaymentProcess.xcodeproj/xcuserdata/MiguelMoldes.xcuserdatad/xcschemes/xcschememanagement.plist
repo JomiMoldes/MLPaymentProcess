@@ -9,6 +9,24 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
+		<key>MLPaymentProcessTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>48BE3D481FAFA8A500A8D7C5</key>
+		<dict>
+			<key>primary</key>
+			<true />
+		</dict>
+		<key>48BE3D5C1FAFA8A600A8D7C5</key>
+		<dict>
+			<key>primary</key>
+			<true />
+		</dict>
 	</dict>
 </dict>
 </plist>

@@ -6,9 +6,9 @@
 import Foundation
 import UIKit
 
-class MLFlowController {
+class MLFlowController : MLFlowControllerProtocol {
 
-    fileprivate (set) var navController : UINavigationController!
+    var navController : UINavigationController!
 
     init() {
 
@@ -40,12 +40,11 @@ class MLFlowController {
         self.navController.pushViewController(vc, animated: true)
     }
 
-    fileprivate func createInitialVC() -> MLInitialViewController {
+    private func createInitialVC() -> MLInitialViewController {
         let initialViewController = MLInitialViewController(nibName: "MLInitialView", bundle: nil)
-        initialViewController.initialView.model = MLInitialViewModel()
+        initialViewController.initialView.model = MLInitialViewModel(flowController: self)
         return initialViewController
     }
-
 
 }
 
@@ -54,4 +53,10 @@ enum FlowView : String {
     case paymentType
     case bank
     case installments
+}
+
+protocol MLFlowControllerProtocol : class {
+
+    func goNext(from : FlowView)
+
 }
