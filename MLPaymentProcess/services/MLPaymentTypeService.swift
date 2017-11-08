@@ -6,14 +6,19 @@
 import Foundation
 import PromiseKit
 
-class MLPaymentTypeService {
+class MLPaymentTypeService : MLPaymentTypeServiceProtocol {
+
+    let service : MLServiceProtocol
+
+    init(service:MLServiceProtocol) {
+        self.service = service
+    }
 
     func execute() -> Promise<[MLPaymentType]> {
         return Promise<[MLPaymentType]> {
             fulfill, reject in
-            let service = MLService(config: MLGlobalModels.sharedInstance.serviceConfig)
             let request = MLRequest(requestType: .get, path: MLServiceConfig.paymentType)
-            service.execute(request, nil).then {
+            self.service.execute(request, nil).then {
                 response -> Void in
 
                 guard response.error == nil else {

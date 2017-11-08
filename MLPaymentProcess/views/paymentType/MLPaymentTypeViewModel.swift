@@ -19,7 +19,8 @@ class MLPaymentTypeViewModel : MLPaymentStepViewModel {
 
     func getPaymentTypes() {
 
-        MLPaymentTypeService().execute().then {
+        let service = MLService(config: MLGlobalModels.sharedInstance.serviceConfig)
+        MLPaymentTypeService(service: service).execute().then {
             types -> Void in
 
             self.paymentTypes.value = types

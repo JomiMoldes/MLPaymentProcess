@@ -26,7 +26,8 @@ class MLPaymentTypeServiceTest : XCTestCase {
 
         let expect = expectation(description: "MLPaymentTypeService")
 
-        MLPaymentTypeService().execute().then {
+        let service = MLService(config: MLGlobalModels.sharedInstance.serviceConfig)
+        MLPaymentTypeService(service: service).execute().then {
             types -> Void in
 
 
