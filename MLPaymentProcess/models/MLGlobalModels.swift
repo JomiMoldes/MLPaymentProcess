@@ -11,10 +11,16 @@ class MLGlobalModels {
 
     let userPaymentInfo : MLUserPaymentInfo
     let flowController : MLFlowController
+    fileprivate (set) var serviceConfig : MLServiceConfig
 
     private init() {
         self.userPaymentInfo = MLUserPaymentInfo()
         self.flowController = MLFlowController(userPaymentInfo: self.userPaymentInfo)
+        self.serviceConfig = MLServiceConfig(name: "MLPayments", path: "https://api.mercadopago.com/v1/")
+    }
+
+    func addNewServieConfig(config: MLServiceConfig) {
+        self.serviceConfig = config
     }
 
 }

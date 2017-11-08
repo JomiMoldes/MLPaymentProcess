@@ -4,8 +4,9 @@
 //
 
 import Foundation
+import PromiseKit
 
-class MLPaymentStepViewModel {
+class MLPaymentStepViewModel : NSObject {
 
     weak var flowController : MLFlowControllerProtocol!
 

@@ -13,5 +13,9 @@ class MLPaymentTypeViewController : UIViewController {
             return self.view as! MLPaymentTypeView
         }
     }
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.customView.viewDidLoad()
+    }
 }
