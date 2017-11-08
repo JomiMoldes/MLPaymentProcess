@@ -32,6 +32,27 @@ class MLService : MLServiceProtocol {
 
         return operation
     }
+
+    func executeData(_ request: RequestProtocol,_ retry:Int?) -> Promise<Data> {
+        let operation = Promise<Data> {
+            fulfill, reject in
+            let url : URLConvertible = URL(string:request.path)!
+            Alamofire.request(url, method: request.method).responseData {
+                response in
+
+                if let data = response.data {
+                    fulfill(data)
+                    return
+                }
+
+                reject(MLServiceError.noImage)
+
+            }
+
+        }
+
+        return operation
+    }
     
 }
 
@@ -39,9 +60,12 @@ protocol MLServiceProtocol {
 
     func execute(_ request: RequestProtocol,_ retry:Int?) -> Promise<DataResponse<Any>>
 
+    func executeData(_ request: RequestProtocol,_ retry:Int?) -> Promise<Data>
+
 }
 
 enum MLServiceError : Error {
     case noJSON
+    case noImage
 
 }

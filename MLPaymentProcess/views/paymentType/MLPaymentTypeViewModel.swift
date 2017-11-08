@@ -41,9 +41,13 @@ extension MLPaymentTypeViewModel : UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : UITableViewCell!
+        
         let paymentType = self.paymentTypes.value[(indexPath as NSIndexPath).item]
         cell = tableView.dequeueReusableCell(withIdentifier: "PaymentTypeViewCell", for: indexPath) as! MLPaymentTypeViewCell
+
+
         (cell as! MLPaymentTypeViewCell).setup(paymentType)
+        self.loadImage(cell: cell as! MLPaymentTypeViewCell, paymentType: paymentType)
         cell.backgroundColor = UIColor.clear
 
         let backgroundView = UIView()
@@ -51,6 +55,25 @@ extension MLPaymentTypeViewModel : UITableViewDataSource {
         cell.selectedBackgroundView = backgroundView
 
         return cell
+    }
+
+    fileprivate func loadImage(cell: MLPaymentTypeViewCell, paymentType: MLPaymentType) {
+        let generation = cell.generation
+        let service = MLLoadImageService(service: MLService(config: MLGlobalModels.sharedInstance.serviceConfig))
+        MLGlobalModels.sharedInstance.assetsManager.loadImage(path: paymentType.imagePath, service: service).then {
+            image -> Void in
+            guard cell.generation == generation else {
+                return
+            }
+            DispatchQueue.main.async {
+                if let icon = cell.iconImageView {
+                    icon.image = image
+                }
+            }
+        }.catch(policy: .allErrors) {
+            error in
+            print (error.localizedDescription)
+        }
     }
 
 }

@@ -18,6 +18,7 @@
 		45BAF393AA48C4B43DEAEA68 /* MLPaymentTypeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF961D01358A6C6C4CA1E /* MLPaymentTypeRequest.swift */; };
 		45BAF3DB2C398CCE82BE7D9B /* MLInitialViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFF8C0B18A00FC0CA2365 /* MLInitialViewModelTest.swift */; };
 		45BAF47D8CE9CED362E3CB68 /* MLGlobalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7C52D53D3BE99605E18 /* MLGlobalModels.swift */; };
+		45BAF4B1893DF4DAAF7CE121 /* MLAssetsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF78842811BE55878A752 /* MLAssetsManager.swift */; };
 		45BAF4BDF1F027F61404FF16 /* MLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF26F8FD4344500D78CF0 /* MLService.swift */; };
 		45BAF61D44C377B74623346F /* MLPaymentTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF8E54AA250395215AEE8 /* MLPaymentTypeViewModel.swift */; };
 		45BAF65F9C8385FAB570CAA6 /* MLInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBB314E6287CCAF111EA /* MLInitialViewController.swift */; };
@@ -30,6 +31,7 @@
 		45BAFA6C064D2ABA3A839B25 /* MLContinueButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBB311CE77A9339F801A /* MLContinueButtonView.swift */; };
 		45BAFB9A83EF2CDF35DEBEE8 /* MLUserPaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF4FE630B25F02D1A65DE /* MLUserPaymentInfo.swift */; };
 		45BAFBA93B41D4EFD33CA23D /* MLServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFFE13DBD2407E2386CC8 /* MLServiceConfig.swift */; };
+		45BAFC33E36B01F47277DBEC /* MLLoadImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF0363431942DF3404D46 /* MLLoadImageService.swift */; };
 		45BAFCAA2E744E438C6CB1FB /* MLServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFAFBA9DF85DA62B71272 /* MLServiceTest.swift */; };
 		45BAFD5C28CFD331BD918436 /* MLPaymentTypeServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF243B9CAA60420B5749D /* MLPaymentTypeServiceTest.swift */; };
 		45BAFD7FA245E568EA105241 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF8BEFEA036B273A862ED /* UITextFieldExtension.swift */; };
@@ -60,6 +62,7 @@
 		39EBECAC1956543E2BAA5487 /* Pods-MLPaymentProcessTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLPaymentProcessTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MLPaymentProcessTests/Pods-MLPaymentProcessTests.release.xcconfig"; sourceTree = "<group>"; };
 		3C222686C4843F0FCF00EFB8 /* Pods-MLPaymentProcessTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MLPaymentProcessTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MLPaymentProcessTests/Pods-MLPaymentProcessTests.debug.xcconfig"; sourceTree = "<group>"; };
 		44506CF00BCEC940965D6D1D /* Pods_MLPaymentProcess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MLPaymentProcess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45BAF0363431942DF3404D46 /* MLLoadImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLLoadImageService.swift; sourceTree = "<group>"; };
 		45BAF051DCFD2A8BA39CEEFC /* MLNavigationControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLNavigationControllerMock.swift; sourceTree = "<group>"; };
 		45BAF0CAC86EB90913568E52 /* MLInitialViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLInitialViewModel.swift; sourceTree = "<group>"; };
 		45BAF0D99A81164E91684783 /* MLFlowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLFlowController.swift; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 		45BAF4B8F67D29D09BC4BACB /* MLPaymentTypeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLPaymentTypeViewCell.swift; sourceTree = "<group>"; };
 		45BAF4FE630B25F02D1A65DE /* MLUserPaymentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLUserPaymentInfo.swift; sourceTree = "<group>"; };
 		45BAF63472D3F3F76B881578 /* MLPaymentTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLPaymentTypeViewController.swift; sourceTree = "<group>"; };
+		45BAF78842811BE55878A752 /* MLAssetsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLAssetsManager.swift; sourceTree = "<group>"; };
 		45BAF7C52D53D3BE99605E18 /* MLGlobalModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLGlobalModels.swift; sourceTree = "<group>"; };
 		45BAF8BEFEA036B273A862ED /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		45BAF8E54AA250395215AEE8 /* MLPaymentTypeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLPaymentTypeViewModel.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 				45BAF7C52D53D3BE99605E18 /* MLGlobalModels.swift */,
 				45BAF4FE630B25F02D1A65DE /* MLUserPaymentInfo.swift */,
 				45BAFA885785FFF8DF2854EE /* MLPaymentType.swift */,
+				45BAF78842811BE55878A752 /* MLAssetsManager.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 				45BAF26F8FD4344500D78CF0 /* MLService.swift */,
 				45BAF42D4B25ABF162254625 /* MLPaymentTypeService.swift */,
 				45BAF1282E13A0B8B380E70A /* MLPaymentTypeServiceProtocol.swift */,
+				45BAF0363431942DF3404D46 /* MLLoadImageService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -597,6 +603,8 @@
 				45BAFFCC5C8E6420EC5E5CFF /* MLPaymentType.swift in Sources */,
 				45BAF155F36F639CE4B39E27 /* MLPaymentTypeViewCell.swift in Sources */,
 				45BAF6DD416C9364AA8E0A57 /* MLPaymentTypeServiceProtocol.swift in Sources */,
+				45BAF4B1893DF4DAAF7CE121 /* MLAssetsManager.swift in Sources */,
+				45BAFC33E36B01F47277DBEC /* MLLoadImageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
