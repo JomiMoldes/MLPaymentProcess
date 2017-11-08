@@ -3,4 +3,5 @@
 Pods/
 MLPaymentProcess.xcworkspace/
 MLPaymentProcess.xcodeproj/xcuserdata/MiguelMoldes.xcuserdatad/xcschemes/xcschememanagement.plist
+Podfile.lock
 
