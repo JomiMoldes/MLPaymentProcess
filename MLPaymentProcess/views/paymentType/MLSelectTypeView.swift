@@ -22,7 +22,7 @@ class MLSelectTypeView: UIView {
         didSet {
             self.bind()
             self.setup()
-            self.model.getItems()
+//            self.model.getItems()
         }
     }
     
@@ -30,6 +30,9 @@ class MLSelectTypeView: UIView {
         self.model.list.asObservable()
             .subscribe(onNext: {
                 [unowned self] types in
+                guard types.count > 0 else {
+                    return
+                }
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -44,9 +47,7 @@ class MLSelectTypeView: UIView {
     }
 
     fileprivate func setup() {
-        self.tableView.dataSource = self.model
-        self.tableView.delegate = self.model
-        self.tableView.register(UINib(nibName:"MLSelectTypeViewCell", bundle:nil), forCellReuseIdentifier: "SelectTypeViewCell")
+        self.model.setupTable(tableView: self.tableView)
 
         self.continueButtonView.button.addTarget(self, action: #selector(self.continueTouched(_:)), for: .touchUpInside)
 

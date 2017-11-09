@@ -17,7 +17,6 @@ class MLFlowControllerTest : XCTestCase {
     override func setUp() {
         super.setUp()
         self.createSUT()
-//        self.sut.addFirstView()
     }
 
     override func tearDown() {
@@ -31,8 +30,19 @@ class MLFlowControllerTest : XCTestCase {
     }
 
     func testGoNext() {
+
+        self.sut.goNext(from: .initialView)
+        XCTAssertEqual("MLSelectTypeView", (self.getNavController().lastViewController?.nibName)!)
+
+        XCTAssertEqual("PaymentType", self.sut.currentVCName)
+
+        self.sut.goNext(from: .paymentType)
+        XCTAssertEqual("MLSelectTypeView", (self.getNavController().lastViewController?.nibName)!)
+        XCTAssertEqual("Banks", self.sut.currentVCName)
+        
         self.sut.goNext(from: .bank)
-        XCTAssertEqual("MLInstallmentsView", (self.getNavController().lastViewController?.nibName)!)
+        XCTAssertEqual("MLSelectTypeView", (self.getNavController().lastViewController?.nibName)!)
+        XCTAssertEqual("Installments", self.sut.currentVCName)
     }
 
     func testGoBack() {
@@ -82,14 +92,16 @@ class MLFlowControllerFake : MLFlowController {
         self.navController = MLNavigationControllerMock(rootViewController: vc)
     }
 
-    /*override func addFirstView() {
-        self.navController = MLNavigationControllerMock(rootViewController: self.createFirstView())
+    override func createInstallmentsViewModel() -> MLInstallmentsViewModel {
+        return MLSInstallmentsViewModelFake(flowController: self, userPaymentInfo: self.userPaymentInfo)
     }
 
-    fileprivate func createFirstView() -> MLInitialViewController {
-        let initialViewController = MLInitialViewController(nibName: "MLInitialView", bundle: nil)
-        initialViewController.initialView.model = MLInitialViewModel(flowController: self)
-        return initialViewController
-    }*/
+    override func createPaymentTypeViewModel() -> MLPaymentTypeViewModel {
+        return MLPaymentTypeViewModelFake(flowController: self, userPaymentInfo: self.userPaymentInfo)
+    }
+
+    override func createBankViewModel() -> MLBankSelectionViewModel {
+        return MLBankViewModelFake(flowController: self, userPaymentInfo: self.userPaymentInfo)
+    }
 
 }

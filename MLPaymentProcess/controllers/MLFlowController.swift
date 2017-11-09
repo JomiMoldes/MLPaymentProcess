@@ -11,6 +11,8 @@ class MLFlowController : MLFlowControllerProtocol {
     var navController : UINavigationController!
     let userPaymentInfo : MLUserPaymentInfo
 
+    var currentVCName : String = ""
+
     init(userPaymentInfo: MLUserPaymentInfo) {
         self.userPaymentInfo = userPaymentInfo
         NotificationCenter.default.addObserver(self, selector: #selector(goBack(notification:)), name: Notification.Name("backButtonPressed"), object: nil)
@@ -28,23 +30,36 @@ class MLFlowController : MLFlowControllerProtocol {
             case .initialView:
 
                 vc = MLSelectTypeViewController(nibName: "MLSelectTypeView", bundle: nil)
-                (vc as! MLSelectTypeViewController).customView.model = MLPaymentTypeViewModel(flowController: self, userPaymentInfo: self.userPaymentInfo)
+                let viewModel = self.createPaymentTypeViewModel()
+                (vc as! MLSelectTypeViewController).customView.model = viewModel
+                viewModel.getItems()
+                self.currentVCName = "PaymentType"
 
             break
             case .paymentType:
 
                 vc = MLSelectTypeViewController(nibName: "MLSelectTypeView", bundle: nil)
-                (vc as! MLSelectTypeViewController).customView.model = MLBankSelectionViewModel(flowController: self, userPaymentInfo: self.userPaymentInfo)
+                let viewModel = self.createBankViewModel()
+                (vc as! MLSelectTypeViewController).customView.model = viewModel
+                viewModel.getItems()
+
+                self.currentVCName = "Banks"
 
             break
             case .bank:
 
-                vc = MLInstallmentsViewController(nibName: "MLInstallmentsView", bundle: nil)
-                (vc as! MLInstallmentsViewController).customView.model = MLInstallmentsViewModel(flowController: self, userPaymentInfo: self.userPaymentInfo)
+                vc = MLSelectTypeViewController(nibName: "MLSelectTypeView", bundle: nil)
+                let viewModel = self.createInstallmentsViewModel()
+                (vc as! MLSelectTypeViewController).customView.model = viewModel
+                viewModel.getItems()
+
+                self.currentVCName = "Installments"
 
             break
             case .installments:
                 vc = self.createInitialVC()
+
+                self.currentVCName = "Initial"
             break
         }
 
@@ -53,6 +68,18 @@ class MLFlowController : MLFlowControllerProtocol {
 
     @objc func goBack(notification: Notification) {
         self.navController.popViewController(animated: true)
+    }
+
+    func createInstallmentsViewModel() -> MLInstallmentsViewModel {
+        return MLInstallmentsViewModel(flowController: self, userPaymentInfo: self.userPaymentInfo)
+    }
+
+    func createPaymentTypeViewModel() -> MLPaymentTypeViewModel {
+        return MLPaymentTypeViewModel(flowController: self, userPaymentInfo: self.userPaymentInfo)
+    }
+
+    func createBankViewModel() -> MLBankSelectionViewModel {
+        return MLBankSelectionViewModel(flowController: self, userPaymentInfo: self.userPaymentInfo)
     }
 
     private func createInitialVC() -> MLInitialViewController {

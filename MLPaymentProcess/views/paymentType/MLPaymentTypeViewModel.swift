@@ -29,6 +29,8 @@ protocol MLListStepViewModelProtocol : UITableViewDelegate, UITableViewDataSourc
 
     func continueTouched()
 
+    func setupTable(tableView: UITableView)
+
 }
 
 class MLPaymentTypeViewModel : MLPaymentStepViewModel, MLListStepViewModelProtocol {
@@ -60,12 +62,43 @@ class MLPaymentTypeViewModel : MLPaymentStepViewModel, MLListStepViewModelProtoc
         }
     }
 
+    func setupTable(tableView: UITableView) {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UINib(nibName:"MLSelectTypeViewCell", bundle:nil), forCellReuseIdentifier: "SelectTypeViewCell")
+    }
+
     func continueTouched() {
         self.flowController.goNext(from: .paymentType)
     }
 
     func selectedRow(unitId: String) {
         self.userPaymentInfo.creditCard = unitId
+    }
+
+    //MARK - Private
+
+    fileprivate func loadImage(cell: MLSelectTypeViewCell, unitType: MLUnitProtocol) {
+        let generation = cell.generation
+        let service = MLLoadImageService(service: MLService(config: MLGlobalModels.sharedInstance.serviceConfig))
+        MLGlobalModels.sharedInstance.assetsManager.loadImage(path: unitType.imagePath, service: service).then {
+            image -> Void in
+            guard let icon = cell.iconImageView,
+                  cell.generation == generation else {
+                return
+            }
+            DispatchQueue.main.async {
+
+                guard let image = image else {
+                    icon.image = nil
+                    return
+                }
+                icon.image = image
+            }
+        }.catch(policy: .allErrors) {
+            error in
+            print (error.localizedDescription)
+        }
     }
 
 }
@@ -114,28 +147,6 @@ extension MLPaymentTypeViewModel : UITableViewDataSource {
         cell.selectedBackgroundView = backgroundView
 
         return cell
-    }
-
-    fileprivate func loadImage(cell: MLSelectTypeViewCell, unitType: MLUnitProtocol) {
-        let generation = cell.generation
-        let service = MLLoadImageService(service: MLService(config: MLGlobalModels.sharedInstance.serviceConfig))
-        MLGlobalModels.sharedInstance.assetsManager.loadImage(path: unitType.imagePath, service: service).then {
-            image -> Void in
-            guard let icon = cell.iconImageView,
-                  cell.generation == generation else {
-                return
-            }
-            guard let image = image else {
-                icon.image = nil
-                return
-            }
-            DispatchQueue.main.async {
-                icon.image = image
-            }
-        }.catch(policy: .allErrors) {
-            error in
-            print (error.localizedDescription)
-        }
     }
 
 }
