@@ -33,6 +33,7 @@
 		45BAF8CFEFAD6A03B6609AC1 /* MLSelectTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFF4BE473D3CDFCD17D23 /* MLSelectTypeView.swift */; };
 		45BAF8D34AD702C7DD70376D /* MLDesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF39F3AC70CB002014633 /* MLDesignableView.swift */; };
 		45BAF94052E138F11255413A /* MLInitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF0CAC86EB90913568E52 /* MLInitialViewModel.swift */; };
+		45BAFA4CD37227BA41424492 /* MLBackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF4D41FC3E0B249C1305A /* MLBackButtonView.swift */; };
 		45BAFA6C064D2ABA3A839B25 /* MLContinueButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBB311CE77A9339F801A /* MLContinueButtonView.swift */; };
 		45BAFB9A83EF2CDF35DEBEE8 /* MLUserPaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF4FE630B25F02D1A65DE /* MLUserPaymentInfo.swift */; };
 		45BAFBA93B41D4EFD33CA23D /* MLServiceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFFE13DBD2407E2386CC8 /* MLServiceConfig.swift */; };
@@ -44,6 +45,7 @@
 		45BAFFCC5C8E6420EC5E5CFF /* MLPaymentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFA885785FFF8DF2854EE /* MLPaymentType.swift */; };
 		48024EF61FB3997300733DE7 /* paymentType.json in Resources */ = {isa = PBXBuildFile; fileRef = 48024EF51FB3997300733DE7 /* paymentType.json */; };
 		48024EFA1FB475DB00733DE7 /* MLInstallmentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48024EF91FB475DB00733DE7 /* MLInstallmentsView.xib */; };
+		48024EFC1FB479C700733DE7 /* MLBackButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48024EFB1FB479C700733DE7 /* MLBackButtonView.xib */; };
 		482E01B01FB2A3DA004EC27D /* MLSelectTypeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482E01AF1FB2A3DA004EC27D /* MLSelectTypeViewCell.xib */; };
 		48BE3D4D1FAFA8A600A8D7C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE3D4C1FAFA8A600A8D7C5 /* AppDelegate.swift */; };
 		48BE3D4F1FAFA8A600A8D7C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE3D4E1FAFA8A600A8D7C5 /* ViewController.swift */; };
@@ -81,6 +83,7 @@
 		45BAF39F3AC70CB002014633 /* MLDesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLDesignableView.swift; sourceTree = "<group>"; };
 		45BAF42D4B25ABF162254625 /* MLPaymentTypeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLPaymentTypeService.swift; sourceTree = "<group>"; };
 		45BAF4B8F67D29D09BC4BACB /* MLSelectTypeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLSelectTypeViewCell.swift; sourceTree = "<group>"; };
+		45BAF4D41FC3E0B249C1305A /* MLBackButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLBackButtonView.swift; sourceTree = "<group>"; };
 		45BAF4FE630B25F02D1A65DE /* MLUserPaymentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLUserPaymentInfo.swift; sourceTree = "<group>"; };
 		45BAF63472D3F3F76B881578 /* MLSelectTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLSelectTypeViewController.swift; sourceTree = "<group>"; };
 		45BAF78842811BE55878A752 /* MLAssetsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLAssetsManager.swift; sourceTree = "<group>"; };
@@ -105,6 +108,7 @@
 		45BAFFE13DBD2407E2386CC8 /* MLServiceConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLServiceConfig.swift; sourceTree = "<group>"; };
 		48024EF51FB3997300733DE7 /* paymentType.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = paymentType.json; sourceTree = SOURCE_ROOT; };
 		48024EF91FB475DB00733DE7 /* MLInstallmentsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MLInstallmentsView.xib; sourceTree = "<group>"; };
+		48024EFB1FB479C700733DE7 /* MLBackButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MLBackButtonView.xib; sourceTree = "<group>"; };
 		482E01AF1FB2A3DA004EC27D /* MLSelectTypeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MLSelectTypeViewCell.xib; sourceTree = "<group>"; };
 		48BE3D491FAFA8A500A8D7C5 /* MLPaymentProcess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLPaymentProcess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48BE3D4C1FAFA8A600A8D7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -302,6 +306,8 @@
 				48BE3D6E1FAFB7C400A8D7C5 /* MLContinueButtonView.xib */,
 				45BAFBB311CE77A9339F801A /* MLContinueButtonView.swift */,
 				45BAF39F3AC70CB002014633 /* MLDesignableView.swift */,
+				48024EFB1FB479C700733DE7 /* MLBackButtonView.xib */,
+				45BAF4D41FC3E0B249C1305A /* MLBackButtonView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -481,6 +487,7 @@
 				48BE3D6F1FAFB7C400A8D7C5 /* MLContinueButtonView.xib in Resources */,
 				482E01B01FB2A3DA004EC27D /* MLSelectTypeViewCell.xib in Resources */,
 				48024EFA1FB475DB00733DE7 /* MLInstallmentsView.xib in Resources */,
+				48024EFC1FB479C700733DE7 /* MLBackButtonView.xib in Resources */,
 				45BAF20995E70B769FD6F95A /* MLInitialView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -649,6 +656,7 @@
 				45BAF5D69BC8689F3055FCB2 /* MLInstallmentsViewController.swift in Sources */,
 				45BAFE636209E0095E7268DF /* MLInstallmentsView.swift in Sources */,
 				45BAF561AA48994B19591449 /* MLInstallmentsViewModel.swift in Sources */,
+				45BAFA4CD37227BA41424492 /* MLBackButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

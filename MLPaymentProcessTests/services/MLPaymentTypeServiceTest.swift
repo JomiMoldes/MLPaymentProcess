@@ -15,6 +15,10 @@ class MLPaymentTypeServiceTest : XCTestCase {
         super.setUp()
     }
 
+    override func tearDown() {
+        super.tearDown()
+    }
+
     func testExecute() {
 
         stub(condition: isHost("api.mercadopago.com")) {
@@ -42,7 +46,7 @@ class MLPaymentTypeServiceTest : XCTestCase {
             XCTFail("MLPaymentTypeServiceTest - execute")
         }
 
-        waitForExpectations(timeout: 10.0)
+        waitForExpectations(timeout: 2.0)
 
     }
 

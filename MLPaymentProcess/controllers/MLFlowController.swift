@@ -13,6 +13,7 @@ class MLFlowController : MLFlowControllerProtocol {
 
     init(userPaymentInfo: MLUserPaymentInfo) {
         self.userPaymentInfo = userPaymentInfo
+        NotificationCenter.default.addObserver(self, selector: #selector(goBack(notification:)), name: Notification.Name("backButtonPressed"), object: nil)
     }
 
     func addFirstView() {
@@ -48,6 +49,10 @@ class MLFlowController : MLFlowControllerProtocol {
         }
 
         self.navController.pushViewController(vc, animated: true)
+    }
+
+    @objc func goBack(notification: Notification) {
+        self.navController.popViewController(animated: true)
     }
 
     private func createInitialVC() -> MLInitialViewController {

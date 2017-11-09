@@ -35,7 +35,7 @@ class MLInitialViewModelTest : XCTestCase {
         XCTAssertEqual(0.0, self.userInfo.amountToPay)
 
         self.sut.continueTouched(amount: tf.text!)
-        XCTAssertEqual(navController.lastViewController?.nibName, "MLPaymentTypeView")
+        XCTAssertEqual(navController.lastViewController?.nibName, "MLSelectTypeView")
         XCTAssertEqual(12.68, self.userInfo.amountToPay)
 
     }

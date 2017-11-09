@@ -22,11 +22,40 @@ class MLFlowControllerTest : XCTestCase {
 
     override func tearDown() {
         super.tearDown()
+        self.navController = nil
+        self.sut = nil
     }
 
     func testFirstView() {
         XCTAssertEqual("MLInitialView", (self.getNavController().lastViewController?.nibName)!)
     }
+
+    func testGoNext() {
+        self.sut.goNext(from: .bank)
+        XCTAssertEqual("MLInstallmentsView", (self.getNavController().lastViewController?.nibName)!)
+    }
+
+    func testGoBack() {
+        self.sut.goNext(from: .bank)
+
+        XCTAssertNotNil(self.getNavController().lastViewController)
+
+        let nav = self.getNavController()
+        nav.asyncExpectation = expectation(description: "popViewController")
+
+        NotificationCenter.default.post(name: Notification.Name("backButtonPressed"), object: nil)
+
+        waitForExpectations(timeout: 10.0) {
+            error in
+            if error != nil {
+                XCTFail("no viewcontroller poped")
+                return
+            }
+            XCTAssertNil(self.getNavController().lastViewController)
+        }
+
+    }
+
 
     fileprivate func createSUT() {
         self.userInfo = MLUserPaymentInfo()
