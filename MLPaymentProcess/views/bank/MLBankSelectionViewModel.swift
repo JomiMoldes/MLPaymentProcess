@@ -32,9 +32,7 @@ class MLBankSelectionViewModel : MLPaymentTypeViewModel {
     }
 
     override func continueTouched() {
-//        self.flowController.goNext(from: .bank)
-        print("touched")
-
+        self.flowController.goNext(from: .bank)
     }
 
     override func selectedRow(unitId: String) {

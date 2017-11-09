@@ -38,6 +38,9 @@ class MLFlowController : MLFlowControllerProtocol {
             break
             case .bank:
 
+                vc = MLInstallmentsViewController(nibName: "MLInstallmentsView", bundle: nil)
+                (vc as! MLInstallmentsViewController).customView.model = MLInstallmentsViewModel(flowController: self, userPaymentInfo: self.userPaymentInfo)
+
             break
             case .installments:
                 vc = self.createInitialVC()
