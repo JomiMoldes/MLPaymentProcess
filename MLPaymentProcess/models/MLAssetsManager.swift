@@ -10,8 +10,8 @@ class MLAssetsManager {
 
     var cache = Dictionary<String, UIImage>()
 
-    func loadImage(path: String, service: MLLoadImageServiceProtocol) -> Promise<UIImage> {
-        return Promise<UIImage> {
+    func loadImage(path: String, service: MLLoadImageServiceProtocol) -> Promise<UIImage?> {
+        return Promise<UIImage?> {
             fulfill, reject in
 
             if let imageCached = cache[path] {
@@ -22,6 +22,10 @@ class MLAssetsManager {
             service.execute(path: path).then {
                 image -> Void in
 
+                guard let image = image else {
+                    fulfill(nil)
+                    return
+                }
                 self.cache[path] = image
                 fulfill(image)
             }.catch(policy: .allErrors){

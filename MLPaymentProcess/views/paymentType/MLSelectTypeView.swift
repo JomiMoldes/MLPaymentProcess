@@ -8,24 +8,26 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class MLPaymentTypeView : UIView {
+class MLSelectTypeView: UIView {
 
     @IBOutlet weak var tableView : UITableView!
 
     @IBOutlet weak var continueButtonView : MLContinueButtonView!
 
+    @IBOutlet weak var titleLabel : UILabel!
+
     let disposable = DisposeBag()
 
-    var model : MLPaymentTypeViewModel! {
+    var model : MLListStepViewModelProtocol! {
         didSet {
             self.bind()
             self.setup()
-            self.model.getPaymentTypes()
+            self.model.getItems()
         }
     }
     
     fileprivate func bind() {
-        self.model.paymentTypes.asObservable()
+        self.model.list.asObservable()
             .subscribe(onNext: {
                 [unowned self] types in
                 DispatchQueue.main.async {
@@ -44,9 +46,11 @@ class MLPaymentTypeView : UIView {
     fileprivate func setup() {
         self.tableView.dataSource = self.model
         self.tableView.delegate = self.model
-        self.tableView.register(UINib(nibName:"MLPaymentTypeViewCell", bundle:nil), forCellReuseIdentifier: "PaymentTypeViewCell")
+        self.tableView.register(UINib(nibName:"MLSelectTypeViewCell", bundle:nil), forCellReuseIdentifier: "SelectTypeViewCell")
 
         self.continueButtonView.button.addTarget(self, action: #selector(self.continueTouched(_:)), for: .touchUpInside)
+
+        self.titleLabel.text = self.model.titleText
     }
 
     @objc func continueTouched(_ sender : UIButton) {

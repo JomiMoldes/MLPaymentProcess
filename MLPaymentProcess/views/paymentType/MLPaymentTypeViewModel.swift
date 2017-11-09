@@ -8,24 +8,51 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class MLPaymentTypeViewModel : MLPaymentStepViewModel {
 
-    var paymentTypes = Variable<[MLPaymentType]>([MLPaymentType]())
+protocol MLUnitProtocol {
 
-    var buttonEnabled = Variable<Bool>(false)
+    var id : String { get }
+    var name : String { get }
+    var imagePath : String { get }
+
+}
+
+protocol MLListStepViewModelProtocol : UITableViewDelegate, UITableViewDataSource {
+
+    var list : Variable<[MLUnitProtocol]> { get }
+
+    var buttonEnabled : Variable<Bool> { get }
+
+    var titleText : String { get }
+
+    func getItems()
+
+    func continueTouched()
+
+}
+
+class MLPaymentTypeViewModel : MLPaymentStepViewModel, MLListStepViewModelProtocol {
+
+    var list : Variable<[MLUnitProtocol]>
+
+    var buttonEnabled : Variable<Bool>
+
+    var titleText : String
 
     override init(flowController: MLFlowControllerProtocol, userPaymentInfo: MLUserPaymentInfo) {
+        self.list = Variable<[MLUnitProtocol]>([MLPaymentType]())
+        self.buttonEnabled = Variable<Bool>(false)
+        self.titleText = "Seleccione el medio de pago"
         super.init(flowController: flowController, userPaymentInfo: userPaymentInfo)
-        self.getPaymentTypes()
     }
 
-    func getPaymentTypes() {
+    func getItems() {
 
         let service = MLService(config: MLGlobalModels.sharedInstance.serviceConfig)
         MLPaymentTypeService(service: service).execute().then {
             types -> Void in
 
-            self.paymentTypes.value = types
+            self.list.value = types
 
         }.catch(policy: .allErrors) {
             error in
@@ -34,7 +61,11 @@ class MLPaymentTypeViewModel : MLPaymentStepViewModel {
     }
 
     func continueTouched() {
-        print("touched")
+        self.flowController.goNext(from: .paymentType)
+    }
+
+    func selectedRow(unitId: String) {
+        self.userPaymentInfo.creditCard = unitId
     }
 
 }
@@ -42,12 +73,12 @@ class MLPaymentTypeViewModel : MLPaymentStepViewModel {
 extension MLPaymentTypeViewModel : UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? MLPaymentTypeViewCell,
+        if let cell = tableView.cellForRow(at: indexPath) as? MLSelectTypeViewCell,
            let type = cell.paymentType {
             cell.backgroundColor = UIColor.clear
             cell.contentView.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 0.3)
             self.buttonEnabled.value = true
-            self.userPaymentInfo.creditCard = type.name
+            self.selectedRow(unitId: type.id)
         }
     }
 
@@ -62,20 +93,20 @@ extension MLPaymentTypeViewModel : UITableViewDelegate {
 extension MLPaymentTypeViewModel : UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.paymentTypes.value.count
+        return self.list.value.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : UITableViewCell!
 
-        let paymentType = self.paymentTypes.value[(indexPath as NSIndexPath).item]
-        cell = tableView.dequeueReusableCell(withIdentifier: "PaymentTypeViewCell", for: indexPath) as! MLPaymentTypeViewCell
+        let paymentType = self.list.value[(indexPath as NSIndexPath).item]
+        cell = tableView.dequeueReusableCell(withIdentifier: "SelectTypeViewCell", for: indexPath) as! MLSelectTypeViewCell
 
         cell.selectionStyle = .none
 
 
-        (cell as! MLPaymentTypeViewCell).setup(paymentType)
-        self.loadImage(cell: cell as! MLPaymentTypeViewCell, paymentType: paymentType)
+        (cell as! MLSelectTypeViewCell).setup(paymentType)
+        self.loadImage(cell: cell as! MLSelectTypeViewCell, unitType: paymentType)
         cell.backgroundColor = UIColor.clear
 
         let backgroundView = UIView()
@@ -85,18 +116,23 @@ extension MLPaymentTypeViewModel : UITableViewDataSource {
         return cell
     }
 
-    fileprivate func loadImage(cell: MLPaymentTypeViewCell, paymentType: MLPaymentType) {
+    fileprivate func loadImage(cell: MLSelectTypeViewCell, unitType: MLUnitProtocol) {
         let generation = cell.generation
         let service = MLLoadImageService(service: MLService(config: MLGlobalModels.sharedInstance.serviceConfig))
-        MLGlobalModels.sharedInstance.assetsManager.loadImage(path: paymentType.imagePath, service: service).then {
+        MLGlobalModels.sharedInstance.assetsManager.loadImage(path: unitType.imagePath, service: service).then {
             image -> Void in
             guard cell.generation == generation else {
                 return
             }
             DispatchQueue.main.async {
-                if let icon = cell.iconImageView {
-                    icon.image = image
+                guard let icon = cell.iconImageView else {
+                    return
                 }
+                guard let image = image else {
+                    icon.image = nil
+                    return
+                }
+                icon.image = image
             }
         }.catch(policy: .allErrors) {
             error in

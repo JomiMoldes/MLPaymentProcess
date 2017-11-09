@@ -12,5 +12,6 @@ struct MLServiceConfig {
 
     static let KEY = "444a9ef5-8a6b-429f-abdf-587639155d88"
     static let paymentType = "payment_methods?public_key=\(MLServiceConfig.KEY)"
+    static let banksPath = "payment_methods/card_issuers?public_key=\(MLServiceConfig.KEY)&payment_method_id="
 
 }

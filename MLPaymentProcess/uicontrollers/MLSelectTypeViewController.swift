@@ -6,11 +6,11 @@
 import Foundation
 import UIKit
 
-class MLPaymentTypeViewController : UIViewController {
+class MLSelectTypeViewController: UIViewController {
     
-    var customView : MLPaymentTypeView! {
+    var customView : MLSelectTypeView! {
         get {
-            return self.view as! MLPaymentTypeView
+            return self.view as! MLSelectTypeView
         }
     }
 

@@ -6,15 +6,15 @@
 import Foundation
 import UIKit
 
-class MLPaymentTypeViewCell : UITableViewCell {
+class MLSelectTypeViewCell: UITableViewCell {
 
     @IBOutlet weak var label : UILabel!
     @IBOutlet weak var iconImageView : UIImageView!
 
     var generation = 0
-    var paymentType : MLPaymentType?
+    var paymentType : MLUnitProtocol?
 
-    func setup(_ type: MLPaymentType) {
+    func setup(_ type: MLUnitProtocol) {
         self.paymentType = type
         self.generation += 1
         self.label.text = type.name

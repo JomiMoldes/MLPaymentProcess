@@ -15,8 +15,8 @@ class MLLoadImageService : MLLoadImageServiceProtocol{
         self.service = service
     }
 
-    func execute(path: String) -> Promise<UIImage> {
-        return Promise<UIImage> {
+    func execute(path: String) -> Promise<UIImage?> {
+        return Promise<UIImage?> {
             fulfill, reject in
             let request = MLRequest(requestType: .get, path: path)
             self.service.executeData(request, nil).then {
@@ -27,7 +27,7 @@ class MLLoadImageService : MLLoadImageServiceProtocol{
                     return
                 }
 
-                reject(MLServiceError.noImage)
+                fulfill(nil)
 
             }.catch(policy:.allErrors) {
                 error in
@@ -43,6 +43,6 @@ class MLLoadImageService : MLLoadImageServiceProtocol{
 
 protocol MLLoadImageServiceProtocol {
 
-    func execute(path: String) -> Promise<UIImage>
+    func execute(path: String) -> Promise<UIImage?>
 
 }

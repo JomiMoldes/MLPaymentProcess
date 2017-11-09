@@ -25,10 +25,15 @@ class MLFlowController : MLFlowControllerProtocol {
 
         switch from {
             case .initialView:
-                vc = MLPaymentTypeViewController(nibName: "MLPaymentTypeView", bundle: nil)
-                (vc as! MLPaymentTypeViewController).customView.model = MLPaymentTypeViewModel(flowController: self, userPaymentInfo: self.userPaymentInfo)
+
+                vc = MLSelectTypeViewController(nibName: "MLSelectTypeView", bundle: nil)
+                (vc as! MLSelectTypeViewController).customView.model = MLPaymentTypeViewModel(flowController: self, userPaymentInfo: self.userPaymentInfo)
+
             break
             case .paymentType:
+
+                vc = MLSelectTypeViewController(nibName: "MLSelectTypeView", bundle: nil)
+                (vc as! MLSelectTypeViewController).customView.model = MLBankSelectionViewModel(flowController: self, userPaymentInfo: self.userPaymentInfo)
 
             break
             case .bank:
