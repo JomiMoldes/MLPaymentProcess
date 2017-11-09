@@ -121,17 +121,15 @@ extension MLPaymentTypeViewModel : UITableViewDataSource {
         let service = MLLoadImageService(service: MLService(config: MLGlobalModels.sharedInstance.serviceConfig))
         MLGlobalModels.sharedInstance.assetsManager.loadImage(path: unitType.imagePath, service: service).then {
             image -> Void in
-            guard cell.generation == generation else {
+            guard let icon = cell.iconImageView,
+                  cell.generation == generation else {
+                return
+            }
+            guard let image = image else {
+                icon.image = nil
                 return
             }
             DispatchQueue.main.async {
-                guard let icon = cell.iconImageView else {
-                    return
-                }
-                guard let image = image else {
-                    icon.image = nil
-                    return
-                }
                 icon.image = image
             }
         }.catch(policy: .allErrors) {
