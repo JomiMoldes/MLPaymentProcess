@@ -31,6 +31,10 @@ class MLPaymentTypeViewModel : MLPaymentStepViewModel {
         }
     }
 
+    func continueTouched() {
+        print("touched")
+    }
+
 }
 
 extension MLPaymentTypeViewModel : UITableViewDataSource {

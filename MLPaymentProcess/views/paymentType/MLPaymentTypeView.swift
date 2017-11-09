@@ -12,6 +12,8 @@ class MLPaymentTypeView : UIView {
 
     @IBOutlet weak var tableView : UITableView!
 
+    @IBOutlet weak var continueButtonView : MLContinueButtonView!
+
     let disposable = DisposeBag()
 
     var model : MLPaymentTypeViewModel! {
@@ -36,6 +38,12 @@ class MLPaymentTypeView : UIView {
     fileprivate func setup() {
         self.tableView.dataSource = self.model
         self.tableView.register(UINib(nibName:"MLPaymentTypeViewCell", bundle:nil), forCellReuseIdentifier: "PaymentTypeViewCell")
+
+        self.continueButtonView.button.addTarget(self, action: #selector(self.continueTouched(_:)), for: .touchUpInside)
+    }
+
+    @objc func continueTouched(_ sender : UIButton) {
+        self.model.continueTouched()
     }
 
     func viewDidLoad() {
