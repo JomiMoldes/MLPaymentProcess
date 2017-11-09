@@ -40,6 +40,7 @@
                     <constraint firstItem="r7t-7o-pti" firstAttribute="height" secondItem="bFb-SK-nzp" secondAttribute="height" multiplier="0.7" id="u4X-5g-slQ"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="0.23999999999999999" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="iconImageView" destination="r7t-7o-pti" id="3iL-C3-t0W"/>
                 <outlet property="label" destination="bXW-3h-RTO" id="DpX-3f-zYm"/>

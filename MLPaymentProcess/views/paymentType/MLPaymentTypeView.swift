@@ -33,10 +33,17 @@ class MLPaymentTypeView : UIView {
                 }
             }).disposed(by: self.disposable)
 
+        self.model.buttonEnabled.asObservable().subscribe(onNext: {
+            [unowned self] enabled in
+            self.continueButtonView.button.isEnabled = enabled
+            self.continueButtonView.alpha = enabled ? 1.0 : 0.5
+        }).disposed(by: self.disposable)
+
     }
 
     fileprivate func setup() {
         self.tableView.dataSource = self.model
+        self.tableView.delegate = self.model
         self.tableView.register(UINib(nibName:"MLPaymentTypeViewCell", bundle:nil), forCellReuseIdentifier: "PaymentTypeViewCell")
 
         self.continueButtonView.button.addTarget(self, action: #selector(self.continueTouched(_:)), for: .touchUpInside)

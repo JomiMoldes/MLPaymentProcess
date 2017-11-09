@@ -12,6 +12,8 @@ class MLPaymentTypeViewModel : MLPaymentStepViewModel {
 
     var paymentTypes = Variable<[MLPaymentType]>([MLPaymentType]())
 
+    var buttonEnabled = Variable<Bool>(false)
+
     override init(flowController: MLFlowControllerProtocol, userPaymentInfo: MLUserPaymentInfo) {
         super.init(flowController: flowController, userPaymentInfo: userPaymentInfo)
         self.getPaymentTypes()
@@ -37,6 +39,26 @@ class MLPaymentTypeViewModel : MLPaymentStepViewModel {
 
 }
 
+extension MLPaymentTypeViewModel : UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? MLPaymentTypeViewCell,
+           let type = cell.paymentType {
+            cell.backgroundColor = UIColor.clear
+            cell.contentView.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 0.3)
+            self.buttonEnabled.value = true
+            self.userPaymentInfo.creditCard = type.name
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.contentView.backgroundColor = UIColor.white
+        }
+    }
+
+}
+
 extension MLPaymentTypeViewModel : UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,9 +67,11 @@ extension MLPaymentTypeViewModel : UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : UITableViewCell!
-        
+
         let paymentType = self.paymentTypes.value[(indexPath as NSIndexPath).item]
         cell = tableView.dequeueReusableCell(withIdentifier: "PaymentTypeViewCell", for: indexPath) as! MLPaymentTypeViewCell
+
+        cell.selectionStyle = .none
 
 
         (cell as! MLPaymentTypeViewCell).setup(paymentType)

@@ -12,8 +12,10 @@ class MLPaymentTypeViewCell : UITableViewCell {
     @IBOutlet weak var iconImageView : UIImageView!
 
     var generation = 0
+    var paymentType : MLPaymentType?
 
     func setup(_ type: MLPaymentType) {
+        self.paymentType = type
         self.generation += 1
         self.label.text = type.name
     }
