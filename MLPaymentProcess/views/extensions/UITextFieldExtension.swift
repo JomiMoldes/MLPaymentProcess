@@ -48,4 +48,20 @@ extension UITextField {
         return successful
     }
 
+    func addDoneButtonOnKeyboard()
+    {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        doneToolbar.barStyle = .default
+
+        doneToolbar.items = [UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(donePressed))]
+        doneToolbar.sizeToFit()
+
+        self.inputAccessoryView = doneToolbar
+
+    }
+
+    @objc func donePressed() {
+        self.resignFirstResponder()
+    }
+
 }

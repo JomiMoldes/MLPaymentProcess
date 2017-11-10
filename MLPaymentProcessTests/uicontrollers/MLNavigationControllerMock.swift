@@ -25,7 +25,6 @@ class MLNavigationControllerMock: UINavigationController {
         lastViewController = nil
 
         guard let expectation = asyncExpectation else {
-            XCTFail("missing expectation")
             return super.popViewController(animated: false)
         }
 

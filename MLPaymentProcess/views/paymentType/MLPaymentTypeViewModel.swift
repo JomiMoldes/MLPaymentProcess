@@ -46,6 +46,7 @@ class MLPaymentTypeViewModel : MLPaymentStepViewModel, MLListStepViewModelProtoc
         self.buttonEnabled = Variable<Bool>(false)
         self.titleText = "Seleccione el medio de pago"
         super.init(flowController: flowController, userPaymentInfo: userPaymentInfo)
+        NotificationCenter.default.addObserver(self, selector: #selector(goBack(notification:)), name: Notification.Name("backButtonPressed"), object: nil)
     }
 
     func getItems() {
@@ -99,6 +100,10 @@ class MLPaymentTypeViewModel : MLPaymentStepViewModel, MLListStepViewModelProtoc
             error in
             print (error.localizedDescription)
         }
+    }
+    
+    @objc func goBack(notification: Notification) {
+        self.userPaymentInfo.creditCard = ""
     }
 
 }

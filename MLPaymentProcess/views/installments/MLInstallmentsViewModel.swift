@@ -20,6 +20,7 @@ class MLInstallmentsViewModel : MLPaymentStepViewModel, MLListStepViewModelProto
         self.titleText = "Seleccione la cantidad de cuotas deseada"
         self.buttonEnabled = Variable<Bool>(false)
         super.init(flowController: flowController, userPaymentInfo: userPaymentInfo)
+        NotificationCenter.default.addObserver(self, selector: #selector(goBack(notification:)), name: Notification.Name("backButtonPressed"), object: nil)
     }
 
     func getItems() {
@@ -46,7 +47,11 @@ class MLInstallmentsViewModel : MLPaymentStepViewModel, MLListStepViewModelProto
     }
 
     func selectedRow(installment: MLInstallment) {
-        self.userPaymentInfo.installments = installment.count
+        self.userPaymentInfo.installments = installment
+    }
+    
+    @objc func goBack(notification: Notification) {
+        self.userPaymentInfo.installments = nil
     }
 }
 

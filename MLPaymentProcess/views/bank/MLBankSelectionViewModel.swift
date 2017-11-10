@@ -38,5 +38,9 @@ class MLBankSelectionViewModel : MLPaymentTypeViewModel {
     override func selectedRow(unitId: String) {
         self.userPaymentInfo.bank = unitId
     }
+    
+    @objc override func goBack(notification: Notification) {
+        self.userPaymentInfo.bank = ""
+    }
 
 }

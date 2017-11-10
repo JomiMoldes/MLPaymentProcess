@@ -89,7 +89,7 @@ class MLFlowController : MLFlowControllerProtocol {
 
     private func createInitialVC() -> MLInitialViewController {
         let initialViewController = MLInitialViewController(nibName: "MLInitialView", bundle: nil)
-        initialViewController.initialView.model = MLInitialViewModel(flowController: self, userPaymentInfo: self.userPaymentInfo)
+        initialViewController.setupModel(model: MLInitialViewModel(flowController: self, userPaymentInfo: self.userPaymentInfo))
         self.initialVC = initialViewController
         return initialViewController
     }

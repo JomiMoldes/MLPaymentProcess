@@ -27,14 +27,19 @@ class MLInitialView : UIView {
         self.continueButtonView.button.addTarget(self, action: #selector(self.continueTouched(_:)), for: .touchUpInside)
         self.amountText.delegate = self
         self.amountText.addTarget(self, action: #selector(textHasChanged(_:)), for: .editingChanged)
+        
+        self.amountText.keyboardType = .decimalPad
     }
 
     fileprivate func bind() {
         self.model.buttonEnabled.asObservable().subscribe(onNext: {
             [unowned self] enabled in
-            self.continueButtonView.button.isEnabled = enabled
-            self.continueButtonView.alpha = enabled ? 1.0 : 0.5
+            DispatchQueue.main.async {
+                self.continueButtonView.button.isEnabled = enabled
+                self.continueButtonView.alpha = enabled ? 1.0 : 0.5
+            }
         }).disposed(by: self.disposeBag)
+
     }
 
     @objc func continueTouched(_ sender : UIButton) {
@@ -60,7 +65,16 @@ extension MLInitialView : UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.model.textHasChanged(textField: textField)
     }
-
-
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        //        self.textFieldFocused = textField
+        textField.addDoneButtonOnKeyboard()
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        //        self.textFieldFocused = nil
+        return true
+    }
 
 }

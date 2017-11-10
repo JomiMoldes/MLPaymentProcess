@@ -8,7 +8,7 @@ import PromiseKit
 
 class MLPaymentStepViewModel : NSObject {
 
-    weak var flowController : MLFlowControllerProtocol!
+    let flowController : MLFlowControllerProtocol
 
     var userPaymentInfo : MLUserPaymentInfo!
 
