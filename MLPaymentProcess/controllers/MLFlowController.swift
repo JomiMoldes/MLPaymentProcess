@@ -10,6 +10,7 @@ class MLFlowController : MLFlowControllerProtocol {
 
     var navController : UINavigationController!
     let userPaymentInfo : MLUserPaymentInfo
+    var initialVC : UIViewController?
 
     var currentVCName : String = ""
 
@@ -57,6 +58,10 @@ class MLFlowController : MLFlowControllerProtocol {
 
             break
             case .installments:
+                if self.initialVC != nil {
+                    self.navController.popToViewController(self.initialVC as! MLInitialViewController, animated: true)
+                    return
+                }
                 vc = self.createInitialVC()
 
                 self.currentVCName = "Initial"
@@ -85,6 +90,7 @@ class MLFlowController : MLFlowControllerProtocol {
     private func createInitialVC() -> MLInitialViewController {
         let initialViewController = MLInitialViewController(nibName: "MLInitialView", bundle: nil)
         initialViewController.initialView.model = MLInitialViewModel(flowController: self, userPaymentInfo: self.userPaymentInfo)
+        self.initialVC = initialViewController
         return initialViewController
     }
 
